@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang=pt-br>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width, initial-scale=1.0>
+    <titleFF Replay Migrator Web</
+title>
+    <style>
+        body { font-family sans-serif; background #121212; color white; text-align center; padding 20px; }
+        .card { background #1e1e1e; padding 20px; border-radius 15px; border 1px solid #333; max-width 400px; margin auto; }
+        input { margin 20px 0; }
+        button { background #e74c3c; color white; border none; padding 10px 20px; border-radius 5px; cursor pointer; font-weight bold; }
+        buttonhover { background #c0392b; }
+        .info { font-size 0.8em; color #888; margin-top 15px; }
+    <style>
+</head>
+<body>
+
+    <h2>🚀 FF REPLAY CONVERTERh2
+    
+    <div class="card">
+        <p>Selecione o arquivo 
+<b>.json</b> do seu replay</p>
+        <input type="file"
+id="fileInput" accept=".json">
+        <br>
+        ,button onclick="converterReplay()".CONVERTER E BAIXAR</button>
+        
+        <div class="info">
+            <p>Após baixar, mova o arquivo e o .bin correspondente para a pasta MReplays do destino.</
+p>
+        </div>
+    </div>
+
+    <script>
+        function converterReplay() 
+{
+            const fileInput = document.getElementById('fileInput');
+            const targetVersion = 1.120.1;
+
+            if
+ (fileInput.files.length === 0) {
+                alert(Por favor, selecione um arquivo .json
+primeiro!);
+                return;
+            }
+
+            const file = fileInput.files[0];
+            
+const reader = new FileReader();
+
+            reader.onload = function(e) {
+                let content = e.target.result;
+                
+               // Regex para trocar a versão dentro do JSON
+                const newContent = 
+content.replace(Version[^]g, `"Version":${targetVersion}"`);
+                
+               // Criar o download do novo arquivo
+                
+            const blob = 
+new Blob([newContent], { type :
+'application/json' });
+                const url = 
+URL.createObjectURL(blob);
+                const a = 
+document.createElement('a');
+                a.href = url;
+                a.download = 
+file.name;
+                document.body.appendChild(a);
+                                a.click();
+
+                document.body.removeChild(a);
+
+                URL.revokeObjectURL(url);
+                
+                alert(Replay
+convertido com sucesso!");
+            };
+
+reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
