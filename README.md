@@ -1,0 +1,14 @@
+{
+  "name": "ff-replay-migrator",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "mkdir -p www && cp index.html www/"
+  },
+  "dependencies": {
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/android": "^5.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.0.0"
+  }
+}
